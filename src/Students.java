@@ -4,33 +4,20 @@ import java.util.Scanner;
 
 import static java.sql.DriverManager.*;
 
-public class TrainJDBC {
+public class Students {
 
     public static void main(String[] args) {
         Connection conn = null;
         try {
+
             // Path of database
             String url = "jdbc:sqlite:/Users/nybruger/Desktop/portfolie2.db";
+
             // This path is provided to get connection
             conn = getConnection(url);
 
                 // Contains a statement for connection conn
                 Statement stmt = conn.createStatement();
-
-
-                /*// A string containing the SQL syntax
-                String sql;
-                sql = "SELECT * FROM Students";
-                // Execute the statement and return the selected to ResultSet rs
-                ResultSet rs = stmt.executeQuery(sql);
-                //Provide the PresentDepartures function with the result set rs to print to screen
-                 PresentStudents(rs);
-
-                // same recipie as above
-                String gradeAVG;
-                gradeAVG = "SELECT * FROM Grade";
-                ResultSet rs2 = stmt.executeQuery(gradeAVG);
-                PresentGrades(rs2);*/
 
                 System.out.println("input student ID nr");
 
@@ -49,10 +36,12 @@ public class TrainJDBC {
 
                 String courseID = scanner2.nextLine();
 
+                // Calculating average grade for a given student, where studentID is given by scanner1
                 ResultSet rs1 = stmt.executeQuery("SELECT avg(Grade) from Grade WHERE StudentID='"+studentID+"'");
                 if(rs1.next())
                     System.out.println("Average grade for student nr. " + studentID + " = " + rs1.getFloat(1));
 
+                // Calculating avarage grade for a given course, where courseID is given by scanner2
                 ResultSet rs2 = stmt.executeQuery("SELECT avg(Grade) from Grade WHERE CourseID='"+courseID+"'");
                 if(rs2.next())
                     System.out.println("Average grade for course " + courseID + " = " + rs2.getFloat(1));
