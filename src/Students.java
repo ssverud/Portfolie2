@@ -39,12 +39,12 @@ public class Students {
                 // Calculating average grade for a given student, where studentID is given by scanner1
                 ResultSet rs1 = stmt.executeQuery("SELECT avg(Grade) from Grade WHERE StudentID='"+studentID+"'");
                 if(rs1.next())
-                    System.out.println("Average grade for student nr. " + studentID + " = " + rs1.getFloat(1));
+                    System.out.println("Average grade for studentID nr. " + studentID + " = " + rs1.getFloat(1));
 
                 // Calculating avarage grade for a given course, where courseID is given by scanner2
                 ResultSet rs2 = stmt.executeQuery("SELECT avg(Grade) from Grade WHERE CourseID='"+courseID+"'");
                 if(rs2.next())
-                    System.out.println("Average grade for course " + courseID + " = " + rs2.getFloat(1));
+                    System.out.println("Average grade for courseID " + courseID + " = " + rs2.getFloat(1));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,18 +56,6 @@ public class Students {
                     e.printStackTrace();
                 }
             }
-        }
-    }
-
-    static public void PresentGrades(ResultSet res)
-            throws SQLException {
-        if (res == null)
-            System.out.println("No records for customer");
-        while (res != null & res.next()) {
-            int studentID = res.getInt("StudentID");
-
-            int grade = res.getInt("Grade");
-            System.out.println(studentID + " " + grade);
         }
     }
 }
