@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS Grade (
                                      Grade INTEGER,
                                      CourseID INTEGER NOT NULL,
                                      foreign key (StudentID) references Students (FirstName) ON DELETE RESTRICT ON UPDATE CASCADE,
-                                     foreign key (CourseID) references Course (Number) ON DELETE RESTRICT ON UPDATE CASCADE,
-                                     PRIMARY KEY (StudentID, CourseID)
+                                     foreign key (CourseID) references Course (Number) ON DELETE RESTRICT ON UPDATE CASCADE
+
 );
 
 INSERT INTO Students (ID, FirstName, LastName, Address)  VALUES
